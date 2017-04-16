@@ -49,7 +49,8 @@
       {% include 'nav-item' %}
     {% endfor %}
     <li class="cart-text-link">
-      <a href="/cart" class="CartToggle">
+      {% comment %}<a href="/cart" class="CartToggle">{% endcomment %}
+      <a href="/cart">
         {{ 'layout.cart.title' | t }}
         <span class="cartCost {% if cart.item_count < 1 %} hidden-count {% endif %}">(<span class="money">{{ cart.total_price | money }}</span>)</span>
       </a>
