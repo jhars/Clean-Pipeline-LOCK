@@ -1,3 +1,7 @@
+{%- comment %}<locksmith:5e23>{% endcomment -%}
+  {%- include 'locksmith', locksmith_context: 'layout/start' %}{% capture locksmith_source -%}
+{%- comment %}</locksmith:5e23>{% endcomment -%}
+
 <!doctype html>
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
@@ -20,7 +24,10 @@
   </title>
 
   {% if page_description %}
-  <meta name="description" content="{{ page_description | escape }}">
+  {%- comment %}<locksmith:bb44>{% endcomment -%}
+    {% include 'locksmith-variables', locksmith_hiding_scope: 'resource' %}{% if locksmith_transparent %}<meta name="description" content="{{ page_description | escape }}">{% endif %}
+    {%- comment %}original: <meta name="description" content="{{ page_description | escape }}">{%- endcomment %}
+  {%- comment %}</locksmith:bb44>{% endcomment -%}
   {% endif %}
 
   <!-- Product meta ========================================================= -->
@@ -146,3 +153,7 @@
 
 </body>
 </html>
+
+{%- comment %}<locksmith:9b64>{% endcomment -%}
+  {%- endcapture %}{% include 'locksmith', locksmith_context: 'layout/end' -%}
+{%- comment %}</locksmith:9b64>{% endcomment -%}

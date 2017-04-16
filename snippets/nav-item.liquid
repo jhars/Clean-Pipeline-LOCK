@@ -11,6 +11,9 @@
   {% if linklists[child_list_handle].links != blank %}
     {% assign parent=true %}
     {% for child_link in linklists[child_list_handle].links %}
+      {%- comment %}<locksmith:f3b3>{% endcomment -%}
+        {% include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: child_link %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif %}
+      {%- comment %}</locksmith:f3b3>{% endcomment -%}
       {% if child_count < 10 %}{% assign child_count = child_count | plus: 1 %}{% endif %}
       {% if level < 1 %}
       {% unless grandparent %}
@@ -45,6 +48,9 @@
         {% endif %}
           {% assign level = level | plus: 1 %}
           {% for link in linklists[child_list_handle].links %}
+            {%- comment %}<locksmith:f8af>{% endcomment -%}
+              {% include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: link %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif %}
+            {%- comment %}</locksmith:f8af>{% endcomment -%}
             {% include 'nav-item' %}
           {% endfor %}
           {% assign level = level | minus: 1 %}

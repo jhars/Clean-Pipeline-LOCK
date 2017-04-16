@@ -1,3 +1,7 @@
+{%- comment %}<locksmith:591f>{% endcomment -%}
+  {% assign __product = product %}{% assign product = all_products[section.settings.home_product] %}{% assign product = __product %}
+{%- comment %}</locksmith:591f>{% endcomment -%}
+
 {% assign product = all_products[section.settings.home_product] %}
 {% assign product_home = true %}
 

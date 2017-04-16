@@ -29,6 +29,9 @@
               <hr class="hr--underline">
               <ul class="footer-quicklinks">
                 {% for link in linklist.links %}
+                  {%- comment %}<locksmith:6ce9>{% endcomment -%}
+                    {% include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: link %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif %}
+                  {%- comment %}</locksmith:6ce9>{% endcomment -%}
                   <li><a href="{{ link.url }}">{{ link.title }}</a></li>
                 {% endfor %}
               </ul>
@@ -74,6 +77,9 @@
       <ul class="footer-secondary grid__item inline-list">
           <li><a href="/">&copy; {{ shop.name }} {{ 'now' | date: "%Y" }}</a></li>
         {% for link in linklists[section.settings.footer_secondary_linklist].links %}
+          {%- comment %}<locksmith:cdd1>{% endcomment -%}
+            {% include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: link %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif %}
+          {%- comment %}</locksmith:cdd1>{% endcomment -%}
           <li><a href="{{ link.url }}">{{ link.title }}</a></li>
         {% endfor %}
         <!-- Remove the following two lines to delete Shopify and Pipeline credit -->

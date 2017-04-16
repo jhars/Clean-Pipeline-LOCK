@@ -115,6 +115,9 @@
         {% endif %}
           <div class="grid-uniform{% if settings.image_autoheight_enable %} image_autoheight_enable{% endif %}">
             {% for product in collection.products %}
+              {%- comment %}<locksmith:ff32>{% endcomment -%}
+                {% include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: product %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif %}
+              {%- comment %}</locksmith:ff32>{% endcomment -%}
               {% include 'product-grid-item' %}
             {% else %}
               {% if collection.handle == 'all'%}

@@ -43,6 +43,9 @@
       {% assign main_menu_linklist = 'main-menu' %}
     {% endif %}
     {% for link in linklists[main_menu_linklist].links %}
+      {%- comment %}<locksmith:8338>{% endcomment -%}
+        {% include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: link %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif %}
+      {%- comment %}</locksmith:8338>{% endcomment -%}
       {% include 'nav-item' %}
     {% endfor %}
     <li class="cart-text-link">

@@ -44,6 +44,9 @@
         </div>
         <div class="grid-uniform{% if settings.image_autoheight_enable %} image_autoheight_enable{% endif %}">
           {% for product in collection.products limit:product_limit %}
+            {%- comment %}<locksmith:da15>{% endcomment -%}
+              {% include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: product %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif %}
+            {%- comment %}</locksmith:da15>{% endcomment -%}
             {% include 'product-grid-item' %}
           {% endfor %}
         </div>
