@@ -9,6 +9,24 @@
     - Shopify Payments - http://docs.shopify.com/manual/more/shopify-payments/testing-shopify-payments
 
 {% endcomment %}
+
+
+<script>
+  console.log("JH Console Log");
+
+  $('.cart__row:last').hide();
+  // $('#your-shopping-cart > main > div > form > button').hide();
+</script>
+
+<style>
+/*  .cart__row:last {
+    height: 500px;
+  }*/
+
+  /*#your-shopping-cart > main > div > form > button*/
+</style>
+
+
 {% if cart.item_count > 0 %}
 <div class="wrapper page-margin">
   <form action="/cart" method="post" novalidate class="cart cartForm">
@@ -169,3 +187,5 @@
     <a href="{{ settings.cart_continue_browsing | default: '/collections/all' }}" class="btn btn--large">{{ 'cart.general.continue_browsing_html' | t }}</a>
   </div>
 {% endif %}
+
+
