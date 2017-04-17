@@ -323,42 +323,42 @@ var ajaxifyShopify = (function(module, $) {
 
 
     // Enable the ajax cart
-    if (!settings.disableAjaxCart) {
-      // Handle each case add to cart method
-      switch (settings.method) {
-        case 'flip':
-          flipSetup();
-          break;
+    // if (!settings.disableAjaxCart) {
+    //   // Handle each case add to cart method
+    //   switch (settings.method) {
+    //     case 'flip':
+    //       flipSetup();
+    //       break;
 
-        case 'modal':
-          modalSetup();
-          break;
+    //     case 'modal':
+    //       modalSetup();
+    //       break;
 
-        case 'drawer':
-          drawerSetup();
-          break;
-      }
+    //     case 'drawer':
+    //       drawerSetup();
+    //       break;
+    //   }
 
-      // Escape key closes cart
-      $(document).keyup(function (evt) {
-        if (evt.keyCode == 27) {
-          switch (settings.method) {
-            case 'flip':
-            case 'drawer':
-              hideDrawer();
-              break;
-            case 'modal':
-              hideModal();
-              break;
-          }
-        }
-      });
+    //   // Escape key closes cart
+    //   $(document).keyup(function (evt) {
+    //     if (evt.keyCode == 27) {
+    //       switch (settings.method) {
+    //         case 'flip':
+    //         case 'drawer':
+    //           hideDrawer();
+    //           break;
+    //         case 'modal':
+    //           hideModal();
+    //           break;
+    //       }
+    //     }
+    //   });
 
-      if ($addToCart.length) {
-        // Take over the add to cart form submit
-        formOverride();
-      }
-    }
+    //   if ($addToCart.length) {
+    //     // Take over the add to cart form submit
+    //     formOverride();
+    //   }
+    // }
 
     // Run this function in case we're using the quantity selector outside of the cart
     adjustCart();
