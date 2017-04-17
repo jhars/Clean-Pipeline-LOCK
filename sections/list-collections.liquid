@@ -34,6 +34,9 @@
 
 <div class="wrapper page-margin">
   {% for collection in collections %}
+    {%- comment %}<locksmith:fefd>{% endcomment -%}
+      {% include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: collection %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif %}
+    {%- comment %}</locksmith:fefd>{% endcomment -%}
     {% unless collection.handle == 'frontpage' %}
 
       {% capture collection_title %}{{ collection.title | escape }}{% endcapture %}
@@ -44,9 +47,9 @@
         </div>
         <div class="grid-uniform{% if settings.image_autoheight_enable %} image_autoheight_enable{% endif %}">
           {% for product in collection.products limit:product_limit %}
-            {%- comment %}<locksmith:da15>{% endcomment -%}
+            {%- comment %}<locksmith:9c11>{% endcomment -%}
               {% include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: product %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif %}
-            {%- comment %}</locksmith:da15>{% endcomment -%}
+            {%- comment %}</locksmith:9c11>{% endcomment -%}
             {% include 'product-grid-item' %}
           {% endfor %}
         </div>
