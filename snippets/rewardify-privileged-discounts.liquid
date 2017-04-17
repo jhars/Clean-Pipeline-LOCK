@@ -1,0 +1,83 @@
+        
+
+{% comment %}We only output this script if a Customer is logged in.{% endcomment %}
+{% if customer %} 
+
+{% comment %}We are creating a Javascript tag{% endcomment %}
+<script id="rewardify-script-data" type="text/javascript">
+//<![CDATA[
+    {% comment %}Lets setup our Pricing configuration.{% endcomment %}
+    {% assign privileged_pricing = shop.metafields.privileged_checkouts %}
+    
+    {% comment %}We need to know the Privileged setup. {% endcomment %}
+    var RewardifyPrivilegedData = {
+      'privileged-enabled': {{ privileged_pricing['enabled'] }},
+      'privileged-customers': JSON.parse('{{ privileged_pricing['privileged_customer_tags'] }}'),
+      'privileged-discounts': JSON.parse('{{ privileged_pricing['privileged_discounts'] }}')
+    };
+  
+    {% comment %}This Script Tag is going to be removed in the next script.{% endcomment %}
+//]]>
+</script>
+{% comment %}We are creating a second Javascript tag{% endcomment %}
+<script type="text/javascript">
+//<![CDATA[
+
+    var Rewardify = (function(config) {
+        {% comment %}We want an object with Customer Tags as the key. So lets build one.{% endcomment %}
+        var rewardifyCustomer = {};
+        {% for tag in customer.tags %}
+        rewardifyCustomer['{{ tag | escape }}'] = {{ forloop.index }};
+        {% endfor %}
+
+        {% comment %}Now remove the previous Script Tag{% endcomment %}
+        (elem=document.getElementById("rewardify-script-data")).parentNode.removeChild(elem);
+                
+        return {
+            {% comment %}This function allows us to calculate the Privileged Price for the Customer.{% endcomment %}
+            getPrivilegedPrice: function(productTags, price) {
+                if (config.privilegedData['privileged-enabled'] == 0) {
+                    return;
+                }
+
+                var customerTags = Object.keys(config.privilegedData['privileged-customers']).filter({}.hasOwnProperty.bind(rewardifyCustomer));
+                if (Object.keys(customerTags).length == 0) {
+                    return;
+                }
+
+                var calculatedPrice = price / 100;
+                var privilegedPrice = null;
+                var privilegedDiscount = 0;
+
+                customerTags.forEach(function(customerTag) {
+                    productTags.forEach(function(productTag) {
+                        if (!config.privilegedData['privileged-discounts'].hasOwnProperty(productTag)) {
+                            return;
+                        }
+
+                        if (!config.privilegedData['privileged-discounts'][productTag].hasOwnProperty(customerTag)) {
+                            return;
+                        }
+
+                        var dc = parseFloat(config.privilegedData['privileged-discounts'][productTag][customerTag]);
+                        if (dc > privilegedDiscount) {
+                            privilegedDiscount = dc;
+                        }
+                    });
+                });
+      
+                if (privilegedDiscount > 0) {
+                    privilegedPrice = calculatedPrice - (calculatedPrice * privilegedDiscount / 100);
+                    return '{{ shop.money_format }}'.replace('\{\{amount\}\}', privilegedPrice.toFixed(2));
+                }
+            }
+        };
+    })({
+        privilegedData: RewardifyPrivilegedData
+    });
+
+//]]>
+</script>
+{% endif %}
+
+        

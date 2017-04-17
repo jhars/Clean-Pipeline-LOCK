@@ -48,6 +48,19 @@
       {%- comment %}</locksmith:8338>{% endcomment -%}
       {% include 'nav-item' %}
     {% endfor %}
+{% comment %}    <li>
+      <a href="%LINK%" class="site-nav__link rw-refreshable" title="Store Credit">
+        <span class="" data-refresh="rw-icon-spin4 animate-spin" data-normal=""></span>
+        <span class="rw-menu-label">Store Credit</span>
+      </a>
+    </li>{% endcomment %}
+
+{% comment %}    <li>
+      <a href="%LINK%" class="site-nav__link rw-refreshable" title="Store Credit">
+        <span class="" data-refresh="rw-icon-spin4 animate-spin" data-normal=""></span>
+        <span class="rw-menu-label">Store Credit (<span class="rewardify-redeem-balance">%BALANCE%</span>)</span>
+      </a>
+    </li>{% endcomment %}
     <li class="cart-text-link">
       {% comment %}<a href="/cart" class="CartToggle">{% endcomment %}
       <a href="/cart">

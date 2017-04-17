@@ -15,6 +15,17 @@
   {% assign sold_out = false %}
 {% endif %}
 
+{% if product.tags.size > 0 and customer.tags.size > 0 %}
+
+    <script>
+    var privilegedPrice = Rewardify.getPrivilegedPrice(['{{product.tags | join: "','"}}'], {{ product.price }});
+    if (typeof privilegedPrice !== 'undefined') {
+        document.write("<p>" + privilegedPrice + "</p>");
+    }
+    </script>
+
+{% endif %}
+
 <div class="grid__item {{ grid_offset }} {{ grid_width_small }} {{ grid_width_medium }} {{ grid_width_large }}{% if on_sale %} on-sale{% endif %}  product-grid-item">
   <a href="{{ product.url | within: collection }}" class="grid__image">
     <img src="{{ product_img_url }}" alt="{{ product.featured_image.alt | escape }}">
