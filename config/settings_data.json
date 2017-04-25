@@ -7,7 +7,7 @@
     "color_body_bg": "#ffffff",
     "color_body_text": "#000000",
     "color_primary": "#333333",
-    "color_splash": "#e00034",
+    "color_splash": "#e00000",
     "color_border": "#cccccc",
     "homepage_background_light": "#f7f7f7",
     "homepage_background_dark": "#2e3438",
@@ -91,30 +91,31 @@
               "linklist": "main-menu"
             }
           },
-          "text": {
+          "1493130529921": {
             "type": "text",
             "settings": {
-              "title": "Text column",
+              "title": "PLACEHOLDER COLUMN",
               "text": "<p>Share store details, promotions, or brand content with your customers.<\/p>"
             }
           },
-          "newsletter": {
-            "type": "newsletter",
+          "text": {
+            "type": "text",
             "settings": {
-              "text": "Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals."
+              "title": "LINKS TO:",
+              "text": "<p>REWARDS PROGRAM<\/p>\r\n<p>MY ACCOUNT<\/p>\r\n<p>HOME<\/p>\r\n<p>ROUSH SITE<\/p>"
             }
           }
         },
         "block_order": [
           "linklist",
-          "text",
-          "newsletter"
+          "1493130529921",
+          "text"
         ],
         "settings": {
           "footer_image": "",
           "footer_secondary_linklist": "footer",
           "footer_payment_enable": true,
-          "footer_social_enable": true
+          "footer_social_enable": false
         }
       },
       "product": {
