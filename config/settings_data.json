@@ -2,24 +2,24 @@
   "current": {
     "color_account_bg": "#000000",
     "color_account_text": "#ffffff",
-    "color_header_bg": "#ffffff",
-    "color_header_text": "#333333",
+    "color_header_bg": "#000000",
+    "color_header_text": "#ffffff",
     "color_body_bg": "#ffffff",
     "color_body_text": "#000000",
     "color_primary": "#333333",
-    "color_splash": "#1391a4",
+    "color_splash": "#e00034",
     "color_border": "#cccccc",
     "homepage_background_light": "#f7f7f7",
     "homepage_background_dark": "#2e3438",
     "product_background_color": "#f6f6f6",
     "product_slideshow_arrows": "#cccccc",
-    "color_footer_bg": "#f2f2f2",
-    "color_footer_text": "#333333",
-    "color_footer_social_link": "#2e3438",
-    "font_title": "google:sansStack:Oswald:400",
+    "color_footer_bg": "#000000",
+    "color_footer_text": "#ffffff",
+    "color_footer_social_link": "#ffffff",
+    "font_title": "'Kanit', sans-serif",
     "font_title_capitalize": true,
-    "font_accent": "google:sansStack:Montserrat:400",
-    "font_body": "google:serifStack:PT+Serif:400",
+    "font_accent": "'Kanit', sans-serif",
+    "font_body": "'Kanit', sans-serif",
     "base_font_size": "14px",
     "cart_type": "modal",
     "cart_show_on_click": true,
@@ -69,13 +69,13 @@
       "header": {
         "type": "header",
         "settings": {
-          "logo": "",
-          "logo_max_width": "",
+          "logo": "shopify:\/\/shop_images\/logo-white_c0362bae-7371-42ef-99b9-0c897a7d52c9.png",
+          "logo_max_width": "400",
           "main_menu_linklist": "main-menu",
-          "height": "header--medium",
+          "height": "header--small",
           "meganav_image": "",
           "meganav_link": "",
-          "header_message": "Your announcement text",
+          "header_message": "",
           "header_message_url": "",
           "header_enable_account": true,
           "header_enable_search": true,
@@ -125,6 +125,7 @@
           "show_quantity": true,
           "product_nav_enable": false,
           "product_show_vendor": false,
+          "zoom_enable": false,
           "related_products_enable": true
         }
       },
@@ -134,15 +135,15 @@
           "grid_width_large": "large--one-quarter",
           "grid_width_medium": "medium--one-half",
           "grid_width_small": "small--one-half",
-          "collection_custom_nav_list": "",
+          "collection_custom_nav_list": "apparel",
           "collection_standard_nav": false,
           "collection_type_nav": false,
           "collection_vendor_nav": false,
           "collection_tag_nav": false,
           "collection_sorting": false,
-          "image_height": "use_screen_one_third",
-          "image_overlay": "image-overlay-0",
-          "text_color": "homepage--dark",
+          "image_height": "use_screen_one_fifth",
+          "image_overlay": "image-overlay-50",
+          "text_color": "homepage--white",
           "parallax": true
         }
       },
@@ -194,7 +195,8 @@
           "home_product": "",
           "homepage_product_color": "homepage--white",
           "show_quantity": true,
-          "product_show_vendor": false
+          "product_show_vendor": false,
+          "zoom_enable": false
         }
       },
       "index-collection": {
@@ -204,7 +206,8 @@
           "collection": "",
           "grid": "4",
           "rows": "2",
-          "homepage_collection_color": "homepage--white"
+          "homepage_collection_color": "homepage--white",
+          "show_view_all": false
         }
       },
       "index-video": {
