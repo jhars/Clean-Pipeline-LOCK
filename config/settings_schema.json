@@ -152,6 +152,11 @@
         "label": "Headings font",
         "options": [
           {
+            "value": "'Kanit', sans-serif",
+            "label": "Kanit",
+            "group": "My added fonts"
+          },
+          {
             "value": "'Century Gothic', CenturyGothic, 'AppleGothic', sans-serif",
             "label": "Century Gothic",
             "group": "Sans-serif"
@@ -284,6 +289,11 @@
         "label": "Subheading font",
         "options": [
           {
+            "value": "'Kanit', sans-serif",
+            "label": "Kanit",
+            "group": "My added fonts"
+          },
+          {
             "value": "'Century Gothic', CenturyGothic, 'AppleGothic', sans-serif",
             "label": "Century Gothic",
             "group": "Sans-serif"
@@ -410,6 +420,11 @@
         "id": "font_body",
         "label": "Body font",
         "options": [
+          {
+            "value": "'Kanit', sans-serif",
+            "label": "Kanit",
+            "group": "My added fonts"
+          },
           {
             "value": "'Century Gothic', CenturyGothic, 'AppleGothic', sans-serif",
             "label": "Century Gothic",

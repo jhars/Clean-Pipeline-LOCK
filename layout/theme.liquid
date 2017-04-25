@@ -72,6 +72,7 @@
   <!-- Header hook for plugins ============================================== -->
   {{ content_for_header }}
   {% include 'rewardify-privileged-discounts' %}
+  <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
 </head>
 
 <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
