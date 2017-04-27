@@ -9,22 +9,18 @@
     - Shopify Payments - http://docs.shopify.com/manual/more/shopify-payments/testing-shopify-payments
 
 {% endcomment %}
+  
+{% for tag in customer.tags %}
+  {% if tag != 'WHOLESALER' and tag != 'Dealer' %}
 
+    <style>
+      #rw-cart-block {
+        display: none;
+      }
+    </style>
 
-<script>
-  console.log("JH Console Log");
-
-  $('.cart__row:last').hide();
-  // $('#your-shopping-cart > main > div > form > button').hide();
-</script>
-
-<style>
-/*  .cart__row:last {
-    height: 500px;
-  }*/
-
-  /*#your-shopping-cart > main > div > form > button*/
-</style>
+  {% endif %}
+{% endfor %}
 
 
 {% if cart.item_count > 0 %}
