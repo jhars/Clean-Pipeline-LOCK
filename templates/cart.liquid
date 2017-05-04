@@ -184,18 +184,133 @@
   </div>
 {% endif %}
 
-<a href="http://www.rewardify.ca" onclick="fakePopUnder(this.href); return false;">Using Store Credit to Pay?</a>
+<a id="ask-wholesaler" href="http://www.rewardify.ca" onclick="fakePopUnder(this.href); return false;" style="visibility: hidden;">Using Store Credit to Pay?</a>
 <br>
-<a href="http://www.rewardify.ca" onclick="fakePopUnder(this.href); return false;">Checkout with a PO# (NET-30 Terms)?</a>
+<a id="ask-dealer" href="http://www.rewardify.ca" onclick="fakePopUnder(this.href); return false;" style="visibility: hidden;">Using Store Credit Or NET-30 Payment Terms?</a>
 
-<script>
+{% comment %}<script>
 
-  function fakePopUnder(url) {
+
+  
+  // Firefox 1.0+
+  var isFirefox = typeof InstallTrigger !== 'undefined';
+
+  // Safari 3.0+ "[object HTMLElementConstructor]" 
+  var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification);
+
+  // Chrome 1+
+  var isChrome = !!window.chrome && !!window.chrome.webstore;
+
+
+  console.log("Safari: " + isSafari);
+  console.log("Chrome: " + isChrome);
+  console.log("Firefox: " + isFirefox);
+
+  //==========================================//
+
+  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+
+
+
+</script>{% endcomment %}
+
+{% for tag in customer.tags %}
+  
+
+
+  {% if tag == 'WHOLESALER' or tag == 'Dealer' %}
     
-    console.log(url)
-    var currentURL = document.URL;
-    this.location = url;
-    window.open(currentURL, '_blank');
-  };
+    <script>
+      jQuery(document).ready(function(){
 
-</script>
+        var rwSection = $('#rw-cart-block');
+        // var rwSection = $('.rewardify-redeem-credit-cart');
+
+        console.log('rwSection: ');
+        console.log(rwSection);
+        
+        console.log('attributes...');
+        console.log(rwSection.attr('visibility'));
+
+        if (rwSection) {
+          console.log("rw Section is VISIBLE");
+        } else {
+          console.log("rw Section is HIDDEN");
+        };
+
+      });
+
+
+
+      function fakePopUnder(url) {
+        var currentURL = document.URL;
+        this.location = url;
+        window.open(currentURL, '_blank');
+      };
+
+      function hidePopUnderLinks() {
+        // $('.rewardify-redeem-credit-cart').css('visibility', 'visible');
+      }
+      
+      // Firefox 1.0+
+      var isFirefox = typeof InstallTrigger !== 'undefined';
+
+      // Safari 3.0+ "[object HTMLElementConstructor]" 
+      var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification);
+
+      // Chrome 1+
+      var isChrome = !!window.chrome && !!window.chrome.webstore;
+
+
+      console.log("Safari: " + isSafari);
+      console.log("Chrome: " + isChrome);
+      console.log("Firefox: " + isFirefox);
+
+      //==========================================//
+
+      var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      console.log("is Mobile?? " + isMobile);
+
+
+
+    </script>
+
+  {% endif %}
+
+
+
+
+  {% if tag == 'Dealer' %}
+    <script>
+      if (isSafari) {
+        $('#ask-dealer').css('visibility', 'visible');
+      }
+    </script>
+  {% endif %}
+
+
+  {% if tag == 'WHOLESALER' %}
+    <script>
+      if (isSafari) {
+        $('#ask-wholesaler').css('visibility', 'visible');
+      }
+    </script>
+  {% endif %}
+
+  
+
+
+  {% if tag == 'retail' %}
+    <style>
+      #ask-store-credit {
+        visibility: hidden;
+      }
+      #ask-net-30 {
+        visibility: hidden;
+      }
+    </style>
+  {% endif %}
+
+{% endfor %}
+
