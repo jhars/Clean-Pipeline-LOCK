@@ -163,9 +163,21 @@
           <p class="cart__footer__text"><em>{{ 'cart.general.shipping_at_checkout' | t }}</em></p>
           <input type="submit" name="update" class="btn--secondary update-cart btn--large uppercase" value="{{ 'cart.general.update' | t }}">
           <span><input type="submit" name="checkout" class="btn uppercase btn--large checkout__button" value="{{ 'cart.general.checkout' | t }}"></span>
+          
+          <br><br>
+          <button type="submit" name="rewardify-privileged-checkout" class="btn checkout rewardify-privileged-checkout">NET-30 CHECKOUT</button>
+
+
+          <br><br>
+          <a id="ask-store-credit-or-terms" href="http://www.rewardify.ca" onclick="fakePopUnder(this.href); return false;" style="visibility: hidden;">
+            Paying With Store Credit?<br>(click here to view balance)
+          </a>
+
         </div>
       </div>
     </div>
+
+
     {% if additional_checkout_buttons and settings.cart_show_additional_buttons %}
       <div class="grid__item additional-checkout-buttons">
         {{ content_for_additional_checkout_buttons }}
@@ -184,132 +196,78 @@
   </div>
 {% endif %}
 
-<a id="ask-wholesaler" href="http://www.rewardify.ca" onclick="fakePopUnder(this.href); return false;" style="visibility: hidden;">Using Store Credit to Pay?</a>
-<br>
-<a id="ask-dealer" href="http://www.rewardify.ca" onclick="fakePopUnder(this.href); return false;" style="visibility: hidden;">Using Store Credit Or NET-30 Payment Terms?</a>
+    
 
-{% comment %}<script>
-
-
-  
-  // Firefox 1.0+
-  var isFirefox = typeof InstallTrigger !== 'undefined';
-
-  // Safari 3.0+ "[object HTMLElementConstructor]" 
-  var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification);
-
-  // Chrome 1+
-  var isChrome = !!window.chrome && !!window.chrome.webstore;
-
-
-  console.log("Safari: " + isSafari);
-  console.log("Chrome: " + isChrome);
-  console.log("Firefox: " + isFirefox);
-
-  //==========================================//
-
-  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-
-
-
-</script>{% endcomment %}
+  <script>
+    var checkoutBtnArray = document.getElementsByClassName("checkout");
+    if (checkoutBtnArray.length > 1) {
+      var extraBtn = document.getElementsByClassName("rewardify-privileged-checkout");
+      extraBtn[0].style.display = "none"
+    }
+  </script>
 
 {% for tag in customer.tags %}
   
-
-
-  {% if tag == 'WHOLESALER' or tag == 'Dealer' %}
-    
+  
     <script>
-      jQuery(document).ready(function(){
 
-        var rwSection = $('#rw-cart-block');
-        // var rwSection = $('.rewardify-redeem-credit-cart');
+      // jQuery(document).ready(function(){
 
-        console.log('rwSection: ');
-        console.log(rwSection);
+        var askCreditOrTermsElement = $('#ask-store-credit-or-terms');
         
-        console.log('attributes...');
-        console.log(rwSection.attr('visibility'));
-
-        if (rwSection) {
-          console.log("rw Section is VISIBLE");
-        } else {
-          console.log("rw Section is HIDDEN");
+        function fakePopUnder(url) {
+          var currentURL = document.URL;
+          this.location = url;
+          window.open(currentURL, '_blank')
+          
         };
+        
+        var isFirefox = typeof InstallTrigger !== 'undefined';
+        var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification);
+        var isChrome = !!window.chrome && !!window.chrome.webstore;
 
-      });
+        var isMobileSafari = navigator.userAgent.match(/(iPod|iPhone|iPad)/) && navigator.userAgent.match(/AppleWebKit/);
 
+        //==========================================//
+        var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-
-      function fakePopUnder(url) {
-        var currentURL = document.URL;
-        this.location = url;
-        window.open(currentURL, '_blank');
-      };
-
-      function hidePopUnderLinks() {
-        // $('.rewardify-redeem-credit-cart').css('visibility', 'visible');
-      }
-      
-      // Firefox 1.0+
-      var isFirefox = typeof InstallTrigger !== 'undefined';
-
-      // Safari 3.0+ "[object HTMLElementConstructor]" 
-      var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification);
-
-      // Chrome 1+
-      var isChrome = !!window.chrome && !!window.chrome.webstore;
-
-
-      console.log("Safari: " + isSafari);
-      console.log("Chrome: " + isChrome);
-      console.log("Firefox: " + isFirefox);
-
-      //==========================================//
-
-      var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-      console.log("is Mobile?? " + isMobile);
-
-
+      // });
 
     </script>
-
-  {% endif %}
-
-
 
 
   {% if tag == 'Dealer' %}
     <script>
-      if (isSafari) {
-        $('#ask-dealer').css('visibility', 'visible');
+
+    // jQuery(document).ready(function(){
+      // if (isSafari || (isFirefox && isMobile)) {
+      if (isSafari || isMobileSafari) {
+        askCreditOrTermsElement.css('visibility', 'visible');
+        // askCreditOrTermsElement.text('Paying With Store Credit Or Net-30 Terms?');
       }
+    // });
+
+
     </script>
-  {% endif %}
 
-
-  {% if tag == 'WHOLESALER' %}
+  {% elsif tag == 'WHOLESALER' %}
     <script>
-      if (isSafari) {
-        $('#ask-wholesaler').css('visibility', 'visible');
+    // jQuery(document).ready(function(){
+      // if (isSafari || (isFirefox && isMobile)) {
+      if (isSafari || isMobileSafari) {
+        askCreditOrTermsElement.css('visibility', 'visible');
+        // askCreditOrTermsElement.text('Paying With Store Credit?');
       }
+    // });
+
     </script>
-  {% endif %}
 
-  
-
-
-  {% if tag == 'retail' %}
+  {% else %} {% comment %}IF RETAIL OR NOT SIGNED IN{% endcomment %} 
     <style>
-      #ask-store-credit {
+      #ask-store-credit-or-terms {
         visibility: hidden;
       }
-      #ask-net-30 {
-        visibility: hidden;
-      }
-    </style>
+    </style>    
   {% endif %}
 
 {% endfor %}
