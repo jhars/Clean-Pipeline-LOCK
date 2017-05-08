@@ -164,8 +164,12 @@
           <input type="submit" name="update" class="btn--secondary update-cart btn--large uppercase" value="{{ 'cart.general.update' | t }}">
           <span><input type="submit" name="checkout" class="btn uppercase btn--large checkout__button" value="{{ 'cart.general.checkout' | t }}"></span>
           
+          
+
           <br><br>
-          <button type="submit" name="rewardify-privileged-checkout" class="btn checkout rewardify-privileged-checkout">NET-30 CHECKOUT</button>
+          <button type="submit" name="rewardify-privileged-checkout" id="net-30-button" class="btn checkout rewardify-privileged-checkout" style="visibility: hidden;">NET-30 CHECKOUT</button>
+          
+
 
 
           <br><br>
@@ -214,6 +218,7 @@
       // jQuery(document).ready(function(){
 
         var askCreditOrTermsElement = $('#ask-store-credit-or-terms');
+        var netThirtyBtn = $('#net-30-button');
         
         function fakePopUnder(url) {
           var currentURL = document.URL;
@@ -239,10 +244,14 @@
   {% if tag == 'Dealer' %}
     <script>
 
+    netThirtyBtn.css('visibility', 'visible');
     // jQuery(document).ready(function(){
       // if (isSafari || (isFirefox && isMobile)) {
       if (isSafari || isMobileSafari) {
         askCreditOrTermsElement.css('visibility', 'visible');
+        
+
+
         // askCreditOrTermsElement.text('Paying With Store Credit Or Net-30 Terms?');
       }
     // });
@@ -252,6 +261,7 @@
 
   {% elsif tag == 'WHOLESALER' %}
     <script>
+      netThirtyBtn.css('visibility', 'hidden');
     // jQuery(document).ready(function(){
       // if (isSafari || (isFirefox && isMobile)) {
       if (isSafari || isMobileSafari) {
