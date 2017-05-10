@@ -14,9 +14,9 @@
   {% if tag != 'WHOLESALER' and tag != 'Dealer' %}
 
     <style>
-      #rw-cart-block {
+/*      #rw-cart-block {
         display: none;
-      }
+      }*/
     </style>
 
   {% endif %}
@@ -165,7 +165,8 @@
           <span><input type="submit" name="checkout" class="btn uppercase btn--large checkout__button" value="{{ 'cart.general.checkout' | t }}"></span>
           
           
-
+          <!--
+          
           <br><br>
           <button type="submit" name="rewardify-privileged-checkout" id="net-30-button" class="btn checkout rewardify-privileged-checkout" style="visibility: hidden;">NET-30 CHECKOUT</button>
           
@@ -176,6 +177,8 @@
           <a id="ask-store-credit-or-terms" href="http://www.rewardify.ca" onclick="fakePopUnder(this.href); return false;" style="visibility: hidden;">
             Paying With Store Credit?<br>(click here to view balance)
           </a>
+
+          -->
 
         </div>
       </div>
@@ -203,11 +206,11 @@
     
 
   <script>
-    var checkoutBtnArray = document.getElementsByClassName("checkout");
-    if (checkoutBtnArray.length > 1) {
-      var extraBtn = document.getElementsByClassName("rewardify-privileged-checkout");
-      extraBtn[0].style.display = "none"
-    }
+    // var checkoutBtnArray = document.getElementsByClassName("checkout");
+    // if (checkoutBtnArray.length > 1) {
+    //   var extraBtn = document.getElementsByClassName("rewardify-privileged-checkout");
+    //   extraBtn[0].style.display = "none"
+    // }
   </script>
 
 {% for tag in customer.tags %}
@@ -215,28 +218,24 @@
   
     <script>
 
-      // jQuery(document).ready(function(){
-
-        var askCreditOrTermsElement = $('#ask-store-credit-or-terms');
-        var netThirtyBtn = $('#net-30-button');
+      var askCreditOrTermsElement = $('#ask-store-credit-or-terms');
+      var netThirtyBtn = $('#net-30-button');
+      
+      function fakePopUnder(url) {
+        var currentURL = document.URL;
+        this.location = url;
+        window.open(currentURL, '_blank')
         
-        function fakePopUnder(url) {
-          var currentURL = document.URL;
-          this.location = url;
-          window.open(currentURL, '_blank')
-          
-        };
-        
-        var isFirefox = typeof InstallTrigger !== 'undefined';
-        var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification);
-        var isChrome = !!window.chrome && !!window.chrome.webstore;
+      };
+      
+      var isFirefox = typeof InstallTrigger !== 'undefined';
+      var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification);
+      var isChrome = !!window.chrome && !!window.chrome.webstore;
 
-        var isMobileSafari = navigator.userAgent.match(/(iPod|iPhone|iPad)/) && navigator.userAgent.match(/AppleWebKit/);
+      var isMobileSafari = navigator.userAgent.match(/(iPod|iPhone|iPad)/) && navigator.userAgent.match(/AppleWebKit/);
 
-        //==========================================//
-        var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-      // });
+      //==========================================//
+      var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
     </script>
 
@@ -244,39 +243,28 @@
   {% if tag == 'Dealer' %}
     <script>
 
-    netThirtyBtn.css('visibility', 'visible');
-    // jQuery(document).ready(function(){
-      // if (isSafari || (isFirefox && isMobile)) {
-      if (isSafari || isMobileSafari) {
-        askCreditOrTermsElement.css('visibility', 'visible');
-        
-
-
-        // askCreditOrTermsElement.text('Paying With Store Credit Or Net-30 Terms?');
-      }
-    // });
-
+    // netThirtyBtn.css('visibility', 'visible');
+    //   if (isSafari || isMobileSafari) {
+    //     askCreditOrTermsElement.css('visibility', 'visible');
+    //   }
 
     </script>
 
   {% elsif tag == 'WHOLESALER' %}
     <script>
-      netThirtyBtn.css('visibility', 'hidden');
-    // jQuery(document).ready(function(){
-      // if (isSafari || (isFirefox && isMobile)) {
-      if (isSafari || isMobileSafari) {
-        askCreditOrTermsElement.css('visibility', 'visible');
-        // askCreditOrTermsElement.text('Paying With Store Credit?');
-      }
-    // });
+      // netThirtyBtn.css('visibility', 'hidden');
+
+      // if (isSafari || isMobileSafari) {
+      //   askCreditOrTermsElement.css('visibility', 'visible');
+      // }
 
     </script>
 
   {% else %} {% comment %}IF RETAIL OR NOT SIGNED IN{% endcomment %} 
     <style>
-      #ask-store-credit-or-terms {
+/*      #ask-store-credit-or-terms {
         visibility: hidden;
-      }
+      }*/
     </style>    
   {% endif %}
 

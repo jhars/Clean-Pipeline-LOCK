@@ -1,0 +1,48 @@
+<div id="rw-cart-block" class="cart__row">
+  <div class="grid">
+    <div class="grid__item text-right">
+      <p>
+        <span class="cart__subtotal-title cart__store-credit-title">Store Credit </span>
+        <span class="h5 cart__store-credit rewardify-redeem-balance"></span>
+      </p>
+      <a type="button" class="rewardify-redeem-credit-cart btn--secondary rw-refreshable">
+        <span data-refresh="rw-icon-spin4 animate-spin" data-normal="" class=""></span> Redeem For Discount
+      </a>
+    </div>
+  </div>
+</div>
+<script>
+  var rwCheckoutForm = document.getElementsByClassName("rw-privileged-checkout-form");
+  console.log(rwCheckoutForm);
+  var header = document.getElementsByClassName("section-header__title");
+  var rfd = document.getElementsByClassName("rewardify-redeem-credit-cart");
+  var rwCartBlock = document.getElementById("rw-cart-block");
+  console.log(rwCartBlock);
+  if (header) {
+    console.log("header exists...");
+    console.log(header);
+    if (header[0]) {
+      if (header[0].innerText == "NET-30 TERM CHECKOUT CART") {
+        console.log("ON PRIVILEGED CHECKOUT");
+        rwCartBlock.style.display = "none";
+        if (rfd.style != undefined) {
+          rfd.style.display = "none";
+        }
+      } else {
+        console.log("!!!!!NOT PRIVILEGED CHECKOUT!!!!! :(");
+      }
+    }
+  }
+  // var askStoreCredit = document.getElementById("ask-store-credit-or-terms");
+  // console.log(askStoreCredit);
+  // console.log(rfd);
+  // console.log(rfd.length);
+  // var storeCreditTitle = document.getElementsByClassName("cart__store-credit-title");
+  // if (rfd.length > 0) {
+  //   askStoreCredit.style.display = "none";
+  // }
+  // console.log("Store Credit Title:" + storeCreditTitle.length);
+  // if (storeCreditTitle.length > 0) {
+  //   askStoreCredit.style.display = "none";
+  // }
+</script>
