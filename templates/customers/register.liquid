@@ -23,7 +23,7 @@
         <label for="CreatePassword" class="label--hidden">{{ 'customer.register.password' | t }}</label>
         <input type="password" name="customer[password]" id="CreatePassword" placeholder="{{ 'customer.register.password' | t }}" {% if form.errors contains "password" %} class="error"{% endif %}>
 
-        <input type="hidden" id="customer_tags" name="customer[tags]" value="retail"/>
+        <input type="hidden" id="customer_tags" name="customer[tags]" value="retailer"/>
 
         <p>
           <input type="submit" value="{{ 'customer.register.submit' | t }}" class="btn btn--full">

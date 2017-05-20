@@ -14,9 +14,15 @@
           <img src="{{ section.settings.button_image | img_url: '1000x' }}" alt="{{ section.settings.button_image.alt | default: section.settings.link_text }}" class="image--flex" />
         </a>
       {% else %}
-        {% unless section.settings.title == '' %}<h1 class="title--flex">{{ section.settings.title }}</h1>{% endunless %}
-        {% unless section.settings.description == '' %}<p class="content--flex h4--body">{{ section.settings.description }}</p>{% endunless %}
+        {% unless section.settings.title == '' %}<h1 class="title--flex" style="font-size:16px;">Welcome to the</h1>{% endunless %}
+        {% unless section.settings.title == '' %}<h1 class="title--flex">ROUSH PERFORMANCE<br>RETAIL STORE</h1>{% endunless %}
         {% unless section.settings.link_text == '' %}<a class="{{ section.settings.button_style }}" href="{{ section.settings.link }}">{{ section.settings.link_text }}</a>{% endunless %}
+{% comment %}        
+        <br><br><br><br><br><br><br><br>
+
+        {% unless section.settings.description == '' %}<p class="content--flex h4--body">This online store features unique merchandise designed exclusivelyfor the<br>Roush Performance owner and enthusiast. There are a variety of product categories from apparel to auto accessoriesin the menu to shop for a perfect gift item for yourself or that someone special.</p>{% endunless %}
+        {% unless section.settings.description == '' %}<p class="content--flex h4--body" style="font-size:12px;">Customer service representatives are available to answer your questions from<br>8:30 AM  – 5:30 PM EST Monday through Friday at (313) 982-1400 or RoushGear@versacom-inc.com.</p>{% endunless %}{% endcomment %}
+        {% comment %}{% unless section.settings.link_text == '' %}<a class="{{ section.settings.button_style }}" href="{{ section.settings.link }}">{{ section.settings.link_text }}</a>{% endunless %}{% endcomment %}
       {% endif %}
     </div>
   </div>
