@@ -18,10 +18,10 @@
 {% if product.tags.size > 0 and customer.tags.size > 0 %}
 
     <script>
-    var privilegedPrice = Rewardify.getPrivilegedPrice(['{{product.tags | join: "','"}}'], {{ product.price }});
-    if (typeof privilegedPrice !== 'undefined') {
-        document.write("<p>" + privilegedPrice + "</p>");
-    }
+    // var privilegedPrice = Rewardify.getPrivilegedPrice(['{{product.tags | join: "','"}}'], {{ product.price }});
+    // if (typeof privilegedPrice !== 'undefined') {
+    //     document.write("<p]>" + privilegedPrice + "</p>");
+    // }
     </script>
 
 {% endif %}

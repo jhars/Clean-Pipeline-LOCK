@@ -11,13 +11,13 @@
 {% endcomment %}
   
 {% for tag in customer.tags %}
-  {% if tag != 'WHOLESALER' and tag != 'Dealer' %}
+  {% if tag != 'wholesaler' and tag != 'employee' %}
 
-    <style>
+{% comment %}    <style>
       #rw-cart-block {
         display: none;
       }
-    </style>
+    </style>{% endcomment %}
 
   {% endif %}
 {% endfor %}
@@ -221,12 +221,12 @@
       var askCreditOrTermsElement = $('#ask-store-credit-or-terms');
       var netThirtyBtn = $('#net-30-button');
       
-      function fakePopUnder(url) {
-        var currentURL = document.URL;
-        this.location = url;
-        window.open(currentURL, '_blank')
+      // function fakePopUnder(url) {
+      //   var currentURL = document.URL;
+      //   this.location = url;
+      //   window.open(currentURL, '_blank')
         
-      };
+      // };
       
       var isFirefox = typeof InstallTrigger !== 'undefined';
       var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification);
@@ -240,7 +240,7 @@
     </script>
 
 
-  {% if tag == 'Dealer' %}
+  {% if tag == 'employee' %}
     <script>
 
     // netThirtyBtn.css('visibility', 'visible');
@@ -248,9 +248,11 @@
     //     askCreditOrTermsElement.css('visibility', 'visible');
     //   }
 
+    console.log("EMPLOYEE HERRE!")
+
     </script>
 
-  {% elsif tag == 'WHOLESALER' %}
+  {% elsif tag == 'wholesaler' %}
     <script>
       // netThirtyBtn.css('visibility', 'hidden');
 
